@@ -7,5 +7,6 @@ services:
       - .:/smileup
     ports:
       - "3000:3000"
-    # environment:
+    environment:
+      EDITOR: vim
     #   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
