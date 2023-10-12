@@ -5,14 +5,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client vim && apt-get -y upgrade
 
-WORKDIR /smileup
+WORKDIR /smile_up
 
-COPY Gemfile /smileup/Gemfile
-COPY Gemfile.lock /smileup/Gemfile.lock
+COPY Gemfile /smile_up/Gemfile
+COPY Gemfile.lock /smile_up/Gemfile.lock
 
 RUN bundle install
 
-COPY . /smileup
+COPY . /smile_up
 
 # RUN yarn install && bundle exec rails webpacker:install
 
