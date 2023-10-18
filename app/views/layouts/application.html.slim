@@ -4,19 +4,25 @@ html
     title
       | Smile Up
     meta[name="viewport" content="width=device-width,initial-scale=1"]
+    / meta[charset="utf-8"]
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
-    header.container-fluid
-      #logo
-        = link_to 'SMILE-UP.', root_path
-      .nav
-        ul
-          li = link_to 'LOG OUT', destroy_user_session_path, data: { turbo_method: 'delete' }
+    header.navbar.navbar-fixed-top
+      .container
+        = link_to 'SMILE-UP.', root_path, id: 'logo'
+        nav
+          ul.nav.navbar-nav.navbar-right
+            li = link_to 'Home',    root_path
+            li = link_to 'About',   about_path
+            li = link_to 'Sign up', new_user_registration_path
+            li = link_to 'log in',  new_user_session_path
+            li = link_to 'log out', destroy_user_session_path, data: { turbo_method: 'delete' }
     main.container
       = yield
     footer.container-fluid
       | 指名候補・NG記者登録システム
-    = debug(params) if Rails.env.development?
+    div
+      = debug(params) if Rails.env.development?

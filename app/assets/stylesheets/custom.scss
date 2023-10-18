@@ -9,8 +9,26 @@ $footer-color: #70a2cd;
 /* Layout */
 
 header {
-  padding: 5px 0px;
+  padding: 5px;
   background-color: $header-color;
+
+  nav {
+    ul li {
+      border-top:    thin solid whitesmoke;
+      border-right:  thin solid whitesmoke;
+      border-bottom: thin solid whitesmoke;
+      &:first-child {
+        border-left: thin solid whitesmoke;
+      }
+
+      a {
+        color: white;
+        &:hover {
+          color: $header-color
+        }
+      }
+    }
+  }
 }
 
 #logo {
@@ -18,13 +36,9 @@ header {
   font: normal bold 2em sans-serif;
   color: white;
 
-  a {
+  &:hover {
     text-decoration: none;
     color: white;
-
-    &:hover {
-      color: white;
-    }
   }
 }
 
