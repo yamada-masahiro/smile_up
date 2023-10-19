@@ -1,0 +1,54 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* Colors */
+
+$header-color: #337ab7;
+$footer-color: #70a2cd;
+
+/* Layout */
+
+header {
+  padding: 5px;
+  background-color: $header-color;
+
+  nav {
+    ul li {
+      border-top:    thin solid whitesmoke;
+      border-right:  thin solid whitesmoke;
+      border-bottom: thin solid whitesmoke;
+      &:first-child {
+        border-left: thin solid whitesmoke;
+      }
+
+      a {
+        color: white;
+        &:hover {
+          color: $header-color
+        }
+      }
+    }
+  }
+}
+
+#logo {
+  float: left;
+  font: normal bold 2em sans-serif;
+  color: white;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+footer {
+  font-size: smaller;
+  color: white;
+  background-color: $footer-color;
+  padding: 5px;
+}
+
+.debug_dump {
+  margin-top: 15px;
+}
