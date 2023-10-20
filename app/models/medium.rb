@@ -1,5 +1,5 @@
 class Medium < ApplicationRecord
-  before_save { self.furigana.gsub! /\s+/, '' }
+  before_save { self.furigana.gsub!(/\s+/, '') }
   validates :name,        presence: true
   validates :furigana,    presence: true,
                           format: { with: /\A\s*[ぁ-ろわをんゔー]+\s*\z/,
