@@ -21,6 +21,7 @@ gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
+gem "validate_url"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
