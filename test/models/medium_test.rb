@@ -20,6 +20,12 @@ class MediumTest < ActiveSupport::TestCase
     assert_not @medium.valid?
   end
 
+  test "振り仮名はひらがなであること" do
+    assert @medium.valid?
+    @medium.furigana = 'ティービーエス'
+    assert @medium.invalid?
+  end
+
   test "ウェブサイトURLは空白であっても良い" do
     @medium.website_url = ''
     assert @medium.valid?
