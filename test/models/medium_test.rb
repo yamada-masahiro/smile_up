@@ -26,6 +26,14 @@ class MediumTest < ActiveSupport::TestCase
     assert @medium.invalid?
   end
 
+  test "振り仮名の前後にある空白は許す" do
+    @medium.furigana = '	てぃーびーえす  '
+    assert @medium.valid?
+    # データベースに保存する前に空白を消す
+    @medium.save
+    assert_equal 'てぃーびーえす', @medium.furigana
+  end
+
   test "ウェブサイトURLは空白であっても良い" do
     @medium.website_url = ''
     assert @medium.valid?
