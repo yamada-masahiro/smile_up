@@ -1,0 +1,10 @@
+p style="color: green" = notice
+
+== render @reporter
+
+div
+  => link_to "Edit this reporter", edit_reporter_path(@reporter)
+  '|
+  =< link_to "Back to reporters", reporters_path
+
+  = button_to "Destroy this reporter", @reporter, method: :delete

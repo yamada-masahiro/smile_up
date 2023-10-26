@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Reporters
+
+#reporters
+  - @reporters.each do |reporter|
+    == render reporter
+    p
+      = link_to "Show this reporter", reporter
+
+= link_to "New reporter", new_reporter_path
