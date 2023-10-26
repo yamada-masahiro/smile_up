@@ -8,6 +8,10 @@ class MediaController < ApplicationController
 
   # GET /media/1 or /media/1.json
   def show
+    respond_to do |format|
+      format.html { redirect_to media_url }
+      format.json { render :show, status: :ok, location: @medium }
+    end
   end
 
   # GET /media/new
@@ -25,7 +29,7 @@ class MediaController < ApplicationController
 
     respond_to do |format|
       if @medium.save
-        format.html { redirect_to medium_url(@medium), notice: "Medium was successfully created." }
+        format.html { redirect_to media_url, notice: "Medium was successfully created." }
         format.json { render :show, status: :created, location: @medium }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class MediaController < ApplicationController
   def update
     respond_to do |format|
       if @medium.update(medium_params)
-        format.html { redirect_to medium_url(@medium), notice: "Medium was successfully updated." }
+        format.html { redirect_to media_url, notice: "Medium was successfully updated." }
         format.json { render :show, status: :ok, location: @medium }
       else
         format.html { render :edit, status: :unprocessable_entity }
