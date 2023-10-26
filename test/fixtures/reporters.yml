@@ -4,10 +4,10 @@ one:
   name: MyString
   furigana: MyString
   medium_id: 1
-  degree_of_welcome: 1
+  desirability_of_appointing: 1
 
 two:
   name: MyString
   furigana: MyString
   medium_id: 1
-  degree_of_welcome: 1
+  desirability_of_appointing: 1
