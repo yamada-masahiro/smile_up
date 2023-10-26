@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_20_093710) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_134359) do
   create_table "media", force: :cascade do |t|
     t.string "name"
     t.string "furigana"
@@ -18,6 +18,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_093710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["furigana"], name: "index_media_on_furigana"
+  end
+
+  create_table "reporters", force: :cascade do |t|
+    t.string "name"
+    t.string "furigana"
+    t.integer "medium_id"
+    t.integer "desirability_of_appointing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["desirability_of_appointing"], name: "index_reporters_on_desirability_of_appointing"
+    t.index ["furigana"], name: "index_reporters_on_furigana"
+    t.index ["medium_id"], name: "index_reporters_on_medium_id"
   end
 
   create_table "users", force: :cascade do |t|
