@@ -1,10 +1,8 @@
-div id="#{dom_id medium}"
-  p
-    strong Name:
-    =< medium.name
-  p
-    strong Furigana:
-    =< medium.furigana
-  p
-    strong Website url:
-    =< medium.website_url
+tr id="#{dom_id medium}"
+  td = medium.name
+  td = medium.furigana
+  td = link_to medium.website_url, medium.website_url, target: '_blank'
+  td
+    = link_to '編集', edit_medium_path(medium), class: 'btn'
+    = link_to '削除', medium_path(medium), class: 'btn', data: { turbo_method:  :delete,
+                                                               turbo_confirm: '削除しますか?' }
