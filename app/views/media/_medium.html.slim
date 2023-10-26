@@ -1,0 +1,9 @@
+tr id="#{dom_id medium}"
+  td = medium.name
+  td = medium.furigana
+  td = link_to medium.website_url, medium.website_url, target: '_blank'
+  td
+    = link_to '編集', edit_medium_path(medium), class: 'btn btn-info'
+    = link_to '削除', medium_path(medium), class: 'btn btn-warning',
+                      data: { turbo_method:  :delete,
+                              turbo_confirm: '削除しますか?' }

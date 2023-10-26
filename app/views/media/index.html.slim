@@ -1,0 +1,15 @@
+p style="color: green" = notice
+
+h1 報道メディア一覧
+
+#media.table-responsive
+  table.table
+    thead
+      th 名称
+      th 読み仮名
+      th Webサイト
+      th 機能
+    tbody
+      == render @media
+
+= link_to 'メディアを追加する', new_medium_path, class: 'btn btn-primary'

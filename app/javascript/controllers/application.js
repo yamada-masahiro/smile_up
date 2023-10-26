@@ -6,4 +6,9 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+// AutoKana の初期化
+// document.addEventListener("DOMContentLoaded", () => {
+//   const autoKana = new AutoKana('#medium_name', '#medium_furigana');
+// });
+
 export { application }
