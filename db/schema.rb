@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_20_093710) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_134359) do
   create_table "media", force: :cascade do |t|
-    t.string "name"
-    t.string "furigana"
+    t.string "name", null: false
+    t.string "furigana", null: false
     t.string "website_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["furigana"], name: "index_media_on_furigana"
+  end
+
+  create_table "reporters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "furigana", null: false
+    t.boolean "independent", default: false, null: false
+    t.integer "medium_id"
+    t.integer "desirability", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["desirability"], name: "index_reporters_on_desirability"
+    t.index ["furigana"], name: "index_reporters_on_furigana"
+    t.index ["medium_id"], name: "index_reporters_on_medium_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_093710) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "reporters", "media"
 end

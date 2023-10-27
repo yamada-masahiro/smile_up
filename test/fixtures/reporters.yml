@@ -1,0 +1,26 @@
+homma:
+  name:         本間　龍
+  furigana:     ほんま　りゅう
+  independent:  false
+  medium:       thousands_of_books_a_month
+  desirability: not_at_all
+
+fujimori:
+  name:         藤森 祥平
+  furigana:     ふじもり しょうへい
+  independent:  false
+  medium:       tbs
+  desirability: highly
+
+eito:
+  name:         鈴木 エイト
+  furigana:     すずき えいと
+  independent:  true
+  # medium:
+  desirability: not_at_all
+
+dave:
+  name:         デーブ スペクター
+  furigana:     でーぶ すぺくたー
+  independent:  true
+  desirability: neutral

@@ -1,4 +1,5 @@
 class Medium < ApplicationRecord
+  has_many :reporters
   before_save { self.furigana.gsub!(/\s+/, '') }
   validates :name,        presence: true
   validates :furigana,    presence: true,
