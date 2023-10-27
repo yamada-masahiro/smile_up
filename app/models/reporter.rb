@@ -8,7 +8,8 @@ class Reporter < ApplicationRecord
       not_at_all: -2
     },
     default: :neutral
-  # before_save { self.furigana.gsub!(/\s+/, '') }
+  # String#my_prettify!: config/initializers/string_extensions.rb
+  before_validation -> { self.furigana.my_prettify! }, on: [:create, :update]
   validates :name,        presence: true
   validates :furigana,    presence: true,
                           format: { with: /\A[\p{Hiragana}ー・]+( [\p{Hiragana}ー・]+)*\z/,
