@@ -25,10 +25,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_134359) do
     t.string "furigana", null: false
     t.boolean "independent", default: false, null: false
     t.integer "medium_id"
-    t.integer "desirability_of_appointing", default: 0, null: false
+    t.integer "desirability", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["desirability_of_appointing"], name: "index_reporters_on_desirability_of_appointing"
+    t.index ["desirability"], name: "index_reporters_on_desirability"
     t.index ["furigana"], name: "index_reporters_on_furigana"
     t.index ["medium_id"], name: "index_reporters_on_medium_id"
   end

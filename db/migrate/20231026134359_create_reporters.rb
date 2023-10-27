@@ -5,11 +5,11 @@ class CreateReporters < ActiveRecord::Migration[7.0]
       t.string :furigana, null: false
       t.boolean :independent, null: false, default: false
       t.references :medium, null: true, foreign_key: true
-      t.integer :desirability_of_appointing, null: false, default: 0
+      t.integer :desirability, null: false, default: 0
 
       t.timestamps
     end
     add_index :reporters, :furigana
-    add_index :reporters, :desirability_of_appointing
+    add_index :reporters, :desirability
   end
 end
