@@ -12,11 +12,25 @@ class Reporter < ApplicationRecord
   before_validation -> { self.name.my_prettify!; self.furigana.my_prettify! }, on: [:create, :update]
   validates :name,        presence: true
   validates :furigana,    presence: true,
-                          format: { with: /\A[\p{Hiragana}ー・]+( [\p{Hiragana}ー・]+)*\z/,
+                          format: { with: /\A[\p{Hiragana}ー]+( [\p{Hiragana}ー]+)*\z/,
                                     message: 'は、ひらがなで記してください' }
+  validate :validate_name_not_include_nakaten
+  validate :validate_furigana_not_include_nakaten
   validate :validate_medium_id_based_on_independent
 
 private
+
+  def validate_name_not_include_nakaten
+    if name.match? /・/
+      errors.add(:name, "姓と名の区切りは「・」ではなく、空白にしてください")
+    end
+  end
+
+  def validate_furigana_not_include_nakaten
+    if furigana.match? /・/
+      errors.add(:furigana, "振り仮名の区切りは「・」ではなく、空白にしてください")
+    end
+  end
 
   def validate_medium_id_based_on_independent
     if independent? && medium_id.present?

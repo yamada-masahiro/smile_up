@@ -6,10 +6,14 @@ class ReporterTest < ActiveSupport::TestCase
     @homma = reporters(:homma)
     @fuji  = reporters(:fujimori)
     @eito  = reporters(:eito)
+    @dave  = reporters(:dave)
   end
 
   test "有効である" do
     assert @homma.valid?
+    assert  @fuji.valid?
+    assert  @eito.valid?
+    assert  @dave.valid?
   end
 
   test "名前は空白であってはならない" do
@@ -30,6 +34,16 @@ class ReporterTest < ActiveSupport::TestCase
   test "振り仮名の前後にある空白は許す" do
     @homma.furigana = '   ほんま りゅう	'
     assert @homma.valid?
+  end
+
+  test "姓と名の区切りは空白であること" do
+    @dave.name = 'デーブ・スペクター'
+    assert_not @dave.valid?
+  end
+
+  test "振り仮名の姓と名の区切りは空白であること" do
+    @dave.furigana = 'でーぶ・すぺくたー'
+    assert_not @dave.valid?
   end
 
   test "独立であれば、メディアIDはnilでなければならない" do

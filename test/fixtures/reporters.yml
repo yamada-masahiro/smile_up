@@ -18,3 +18,9 @@ eito:
   independent:  true
   # medium:
   desirability: not_at_all
+
+dave:
+  name:         デーブ スペクター
+  furigana:     でーぶ すぺくたー
+  independent:  true
+  desirability: neutral
