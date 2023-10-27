@@ -33,7 +33,6 @@ class ReporterTest < ActiveSupport::TestCase
   end
 
   test "独立であれば、メディアIDはnilでなければならない" do
-    pp @eito.medium_id
     assert_nil @eito.medium_id
     assert @eito.valid?
   end

@@ -13,7 +13,4 @@ class Reporter < ApplicationRecord
   validates :furigana,    presence: true,
                           format: { with: /\A[\p{Hiragana}ー・]+( [\p{Hiragana}ー・]+)*\z/,
                                     message: 'は、ひらがなで記してください' }
-  validates :independent, presence: true,
-                          inclusion: { in: [false, true] }
-  validates :medium_id,   presence: true, unless: :independent?
 end

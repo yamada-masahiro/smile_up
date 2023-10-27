@@ -2,19 +2,19 @@ homma:
   name:         本間 龍
   furigana:     ほんま りゅう
   independent:  false
-  medium_id:    thousands_of_books_a_month
-  desirability: :not_at_all
+  medium:       thousands_of_books_a_month
+  desirability: not_at_all
 
 fujimori:
   name:         藤森 祥平
   furigana:     ふじもり しょうへい
   independent:  false
-  medium_id:    tbs
-  desirability: :highly
+  medium:       tbs
+  desirability: highly
 
 eito:
   name:         鈴木 エイト
   furigana:     すずき えいと
   independent:  true
-  medium_id:    nil
-  desirability: :not_at_all
+  # medium:
+  desirability: not_at_all
