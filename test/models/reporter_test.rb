@@ -43,8 +43,9 @@ class ReporterTest < ActiveSupport::TestCase
   end
 
   test "指名の望ましさは定められた範囲に収まること" do
-    assert @homma.desirability.include? Reporter.desirabilities
-    assert  @fuji.desirability.include? Reporter.desirabilities
-    assert  @eito.desirability.include? Reporter.desirabilities
+    desirabilities = Reporter.desirabilities
+    assert @homma.desirability.in? desirabilities
+    assert  @fuji.desirability.in? desirabilities
+    assert  @eito.desirability.in? desirabilities
   end
 end
