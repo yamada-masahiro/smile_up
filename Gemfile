@@ -22,6 +22,8 @@ gem "bootstrap-sass"
 gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 gem "validate_url"
+gem "will_paginate"
+gem "bootstrap-will_paginate"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
