@@ -3,7 +3,7 @@ class ReportersController < ApplicationController
 
   # GET /reporters or /reporters.json
   def index
-    @reporters = Reporter.all
+    @reporters = Reporter.paginate page: params[:page]
   end
 
   # GET /reporters/1 or /reporters/1.json
