@@ -3,7 +3,9 @@ class ReportersController < ApplicationController
 
   # GET /reporters or /reporters.json
   def index
-    @reporters = Reporter.paginate page: params[:page]
+    @reporters = Reporter.all
+    # @reporters = Reporter.paginate page: params[:page], per_page: 10
+    # TODO: paginate を復活する
   end
 
   # GET /reporters/1 or /reporters/1.json
@@ -38,7 +40,7 @@ class ReportersController < ApplicationController
   def update
     respond_to do |format|
       if @reporter.update(reporter_params)
-        format.html { redirect_to reporter_url(@reporter), notice: "Reporter was successfully updated." }
+        format.html { redirect_to reporters_url, notice: "Reporter was successfully updated." }
         format.json { render :show, status: :ok, location: @reporter }
       else
         format.html { render :edit, status: :unprocessable_entity }

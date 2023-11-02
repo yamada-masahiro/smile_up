@@ -3,8 +3,9 @@ p style="color: green" = notice
 h1 記者一覧
 / TODO: h1 を多言語化する
 
-.paginate
-  = will_paginate
+/ .pagination
+/   = will_paginate @reporters
+/   paginate を復活する（2 箇所）
 
 #reporters
   - @reporters.each do |reporter|
@@ -12,7 +13,7 @@ h1 記者一覧
     p
       = link_to "この記者のデータを変更する", edit_reporter_path(reporter)
 
-.paginate
-  = will_paginate
+/ .pagination
+/   = will_paginate @reporters
 
 = link_to "記者を追加する", new_reporter_path

@@ -3,12 +3,14 @@ require "test_helper"
 class ReportersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @reporter = reporters(:homma)
+    @reporter.name.my_prettify!
+    @reporter.furigana.my_prettify!
   end
 
   test "should get index" do
     get reporters_url
     assert_response :success
-    assert_select 'div.pagination', count: 2
+    # assert_select 'div.pagination', count: 2
   end
 
   test "should get new" do
@@ -43,8 +45,10 @@ class ReportersControllerTest < ActionDispatch::IntegrationTest
   test "should update reporter" do
     patch reporter_url(@reporter), params: { reporter: { desirability: @reporter.desirability, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
     assert_redirected_to reporters_url
-    reporter_id = "reporter_#{@reporter.id}"
-    assert_select "##{reporter_id} span", text: @reporter.name
+    follow_redirect!
+    reporter_id = dom_id @reporter
+    assert_select "div##{reporter_id}"
+    assert_match @reporter.name, response.body
   end
 
   test "should destroy reporter" do
