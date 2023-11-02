@@ -2,7 +2,7 @@ require "test_helper"
 
 class MediaControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @medium = media(:one)
+    @medium = media(:thousands_of_books_a_month)
   end
 
   test "should get index" do
