@@ -1,6 +1,6 @@
 homma:
-  name:         本間　龍
-  furigana:     ほんま　りゅう
+  name:         本間 龍
+  furigana:     ほんま りゅう
   independent:  false
   medium:       thousands_of_books_a_month
   desirability: not_at_all
@@ -24,3 +24,35 @@ dave:
   furigana:     でーぶ すぺくたー
   independent:  true
   desirability: neutral
+#
+# 記者を 100 人 生成する
+<% 100.times do |i| %>
+
+rptr_<%= i + 1 %>:
+  <% gimei = Gimei.name %>
+  name:         <%= gimei.kanji %>
+  furigana:     <%= gimei.hiragana %>
+  # 30％ の確率で独立記者を、70％ の確率で所属記者を生成する
+  <% independent = (rand < 0.30) ? true : false %>
+  <% if independent %>
+  independent:  true
+  <% else %>
+  independent:  false
+  medium:       mdm_<%= (1..30).to_a.sample %> # ランダムに生成したメディアを割り振る
+  <% end %>
+  <% random_integer = rand(100)                # 0 から 99 までのランダムな整数を生成
+     desirability = case random_integer
+                    when 0
+                      "highly"                 # 確率  1％
+                    when 1..19
+                      "somewhat"               # 確率 19％
+                    when 20..79
+                      "neutral"                # 確率 60％
+                    when 80..98
+                      "not_very"               # 確率 19％
+                    when 99
+                      "not_at_all"             # 確率  1％
+                    end
+  %>
+  desirability: <%= desirability %>
+<% end %>

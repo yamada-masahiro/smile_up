@@ -105,6 +105,8 @@ GEM
     erubi (1.12.0)
     execjs (2.9.1)
     ffi (1.16.3)
+    gimei (1.2.0)
+      romaji
     globalid (1.2.1)
       activesupport (>= 6.1)
     hpricot (0.8.6)
@@ -201,6 +203,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -273,6 +277,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9.2)
+  gimei
   html2slim
   importmap-rails
   jbuilder
