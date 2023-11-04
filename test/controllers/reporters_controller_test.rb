@@ -2,12 +2,15 @@ require "test_helper"
 
 class ReportersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @reporter = reporters(:one)
+    @reporter = reporters(:homma)
+    @reporter.name.my_prettify!
+    @reporter.furigana.my_prettify!
   end
 
   test "should get index" do
     get reporters_url
     assert_response :success
+    # assert_select 'div.pagination', count: 2
   end
 
   test "should get new" do
@@ -17,25 +20,44 @@ class ReportersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create reporter" do
     assert_difference("Reporter.count") do
-      post reporters_url, params: { reporter: { degree_of_welcome: @reporter.degree_of_welcome, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
+      post reporters_url, params: { reporter: { desirability: @reporter.desirability, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
     end
 
-    assert_redirected_to reporter_url(Reporter.last)
+    # TODO: `index`にリダイレクトする処理を復活する
+    # TODO: 代わりに`show`にリダイレクトするのを止める
+    assert_not flash.empty?
+    assert_redirected_to Reporter.last
+    follow_redirect!
+    assert_response :success
+    # assert_redirected_to reporters_url
+    # reporter_id = "reporter_#{@reporter.id}"
+    # assert_select "##{reporter_id} span", text: @reporter.name
   end
 
   test "should show reporter" do
     get reporter_url(@reporter)
+    # TODO: `index`にリダイレクトする処理を復活する
+    # TODO: 代わりに`show`にリダイレクトするのを止める
     assert_response :success
+    # assert_redirected_to reporters_url
+    # reporter_id = "reporter_#{@reporter.id}"
+    # assert_select "##{reporter_id} span", text: @reporter.name
   end
 
   test "should get edit" do
     get edit_reporter_url(@reporter)
     assert_response :success
+    assert_select 'input[value=?]', @reporter.name
+    assert_select 'input[value=?]', @reporter.furigana
   end
 
   test "should update reporter" do
-    patch reporter_url(@reporter), params: { reporter: { degree_of_welcome: @reporter.degree_of_welcome, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
-    assert_redirected_to reporter_url(@reporter)
+    patch reporter_url(@reporter), params: { reporter: { desirability: @reporter.desirability, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
+    assert_redirected_to reporters_url
+    follow_redirect!
+    reporter_id = dom_id @reporter
+    assert_select "div##{reporter_id}"
+    assert_match @reporter.name, response.body
   end
 
   test "should destroy reporter" do

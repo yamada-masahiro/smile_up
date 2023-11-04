@@ -5,3 +5,169 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Medium.create(
+  [ { name:        'Arc Times',
+      furigana:    'あーくたいむず',
+      website_url: 'https://www.youtube.com/@ArcTimes1' },
+    { name:        '一月万冊',
+      furigana:    'ひとつきまんさつ',
+      website_url: 'https://www.youtube.com/@yukoreadman' },
+    { name:        '日経ビジネス',
+      furigana:    'にっけいびじねす',
+      website_url: 'https://business.nikkei.com' },
+    { name:        '東洋経済',
+      furigana:    'とうようけいざい',
+      website_url: 'https://toyokeizai.net' },
+    { name:        '週刊文春',
+      furigana:    'しゅうかんぶんしゅん',
+      website_url: 'https://bunshun.jp/list/magazine/shukan-bunshun' },
+    { name:        'FLASH',
+      furigana:    'ふらっしゅ',
+      website_url: 'https://smart-flash.jp' },
+    { name:        'FRIDAY',
+      furigana:    'ふらいでー',
+      website_url: 'https://friday.kodansha.co.jp' },
+    { name:        '読売新聞',
+      furigana:    'よみうりしんぶん',
+      website_url: 'https://www.yomiuri.co.jp' },
+    { name:        '朝日新聞',
+      furigana:    'あさひしんぶん',
+      website_url: 'https://www.asahi.com' },
+    { name:        '毎日新聞',
+      furigana:    'まいにちしんぶん',
+      website_url: 'https://mainichi.jp' },
+    { name:        '産経新聞',
+      furigana:    'さんけいしんぶん',
+      website_url: 'https://www.sankei.com' },
+    { name:        '日本経済新聞',
+      furigana:    'にほんけいざいしんぶん',
+      website_url: 'https://www.nikkei.com' },
+    { name:        '中日新聞',
+      furigana:    'ちゅうにちしんぶん',
+      website_url: 'https://www.chunichi.co.jp' },
+    { name:        '日刊スポーツ',
+      furigana:    'にっかんすぽーつ',
+      website_url: 'https://www.nikkansports.com' },
+    { name:        'スポーツニッポン',
+      furigana:    'すぽーつにっぽん',
+      website_url: 'https://www.sponichi.co.jp' },
+    { name:        'サンケイスポーツ',
+      furigana:    'さんけいすぽーつ',
+      website_url: 'https://www.sanspo.com' },
+    { name:        'スポーツ報知',
+      furigana:    'すぽーつほうち',
+      website_url: 'https://hochi.news' },
+    { name:        '中日スポーツ',
+      furigana:    'ちゅうにちすぽーつ',
+      website_url: 'https://www.chunichi.co.jp/chuspo' },
+    { name:        'デイリースポーツ',
+      furigana:    'でいりーすぽーつ',
+      website_url: 'https://www.daily.co.jp' },
+    { name:        '夕刊フジ',
+      furigana:    'ゆうかんふじ',
+      website_url: 'https://www.zakzak.co.jp' },
+    { name:        '日刊ゲンダイ',
+      furigana:    'にっかんげんだい',
+      website_url: 'https://www.nikkan-gendai.com' },
+    { name:        '東京スポーツ',
+      furigana:    'とうきょうすぽーつ',
+      website_url: 'https://www.tokyo-sports.co.jp' },
+    { name:        'NHK',
+      furigana:    'えぬえいちけい',
+      website_url: 'https://www.nhk.or.jp' },
+    { name:        '日本テレビ',
+      furigana:    'にほんてれび',
+      website_url: 'https://www.ntv.co.jp' },
+    { name:        'テレビ朝日',
+      furigana:    'てれびあさひ',
+      website_url: 'https://www.tv-asahi.co.jp' },
+    { name:        'TBS',
+      furigana:    'てぃーびーえす',
+      website_url: 'https://www.tbs.co.jp' },
+    { name:        'フジテレビ',
+      furigana:    'ふじてれび',
+      website_url: 'https://www.fujitv.co.jp' },
+    { name:        'テレビ東京',
+      furigana:    'てれびとうきょう',
+      website_url: 'https://www.tv-tokyo.co.jp' },
+    { name:        '読売テレビ',
+      furigana:    'よみうりてれび',
+      website_url: 'https://www.ytv.co.jp' },
+    { name:        'BBC',
+      furigana:    'びーびーしー',
+      website_url: 'https://www.bbc.com/japanese' },
+    { name:        '共同通信',
+      furigana:    'きょうどうつうしん',
+      website_url: 'https://www.kyodo.co.jp' },
+    { name:        '時事通信',
+      furigana:    'じじつうしん',
+      website_url: 'https://www.jiji.com' },
+    { name:        'ロイター通信',
+      furigana:    'ろいたーつうしん',
+      website_url: 'https://jp.reuters.com' },
+    { name:        'ニューヨーク・タイムズ',
+      furigana:    'にゅーよーく たいむず',
+      website_url: 'https://www.nytimes.com' }
+  ]
+)
+
+Medium.find_by(name: 'Arc Times').reporters.create(
+  [
+    { name:         '尾形 聡彦',
+      furigana:     'おがた としひこ',
+      independent:  false,
+      desirability: :not_at_all },
+    { name:         '望月 衣塑子',
+      furigana:     'もちづき いそこ',
+      independent:  false,
+      desirability: :not_at_all }
+  ]
+)
+
+Medium.find_by(name: '一月万冊').reporters.create(
+  [
+    { name:         '本間 龍',
+      furigana:     'ほんま りゅう',
+      independent:  false,
+      desirability: :not_at_all },
+    { name:         '佐藤 章',
+      furigana:     'さとう あきら',
+      independent:  false,
+      desirability: :not_at_all }
+  ]
+)
+
+Reporter.create(
+  [
+    { name:         '松谷 創一郎',
+      furigana:     'まつたに そういちろう',
+      independent:  true,
+      desirability: :not_at_all },
+    { name:         '鈴木 エイト',
+      furigana:     'すずき えいと',
+      independent:  true,
+      desirability: :not_at_all },
+    { name:         '駒井 千佳子',
+      furigana:     'こまい ちかこ',
+      independent:  true,
+      desirability: :highly }
+  ]
+)
+
+Medium.find_by(name: 'TBS').reporters.create(
+  [
+    { name:         '藤森 祥平',
+      furigana:     'ふじもり しょうへい',
+      independent:  false,
+      desirability: :highly }
+  ]
+)
+
+Medium.find_by(name: '東洋経済').reporters.create(
+  [
+    { name:         '山田',
+      furigana:     'やまだ',
+      independent:  false,
+      desirability: :somewhat }
+  ]
+)

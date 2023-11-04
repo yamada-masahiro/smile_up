@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      medium:   メディア
+      reporter: 記者
+    attributes:
+      medium:
+        name:        名称
+        furigana:    振り仮名
+        website_url: ウェブサイト URL
+      reporter:
+        name:         氏名
+        furigana:     振り仮名
+        independent:  独立系
+        medium_id:    所属メディアID
+        desirability: 会見での指名

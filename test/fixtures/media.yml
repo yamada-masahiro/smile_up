@@ -7,3 +7,20 @@ thousands_of_books_a_month:
   name:        一月万冊
   furigana:    ひとつきまんさつ
   website_url: https://www.youtube.com/channel/UC_Q8cHoJnhNp6GHPkPOoSgw
+#
+# メディアを 30 社 生成する
+<% 30.times do |i| %>
+
+mdm_<%= i + 1 %>:
+  <% address  = Gimei.address.prefecture %>
+  <% kanji    = address.kanji.sub(/[都府県]\z/, '') %>
+  <% furigana = address.hiragana.sub(/(と|ふ|けん)\z/, '') %>
+  <% romaji   = address.romaji.downcase.sub(/(to|fu|ken)\z/, '') %>
+  <% suffix   = [ %w(新聞 しんぶん shimbun),
+                  %w(テレビ てれび tv),
+                  %w(ラジオ らじお radio),
+                  %w(ニュース にゅーす news) ].sample %>
+  name:        <%= kanji    %><%= suffix[0] %>
+  furigana:    <%= furigana %><%= suffix[1] %>
+  website_url: https://www.<%= romaji %><%= suffix[2] %>.com
+<% end %>

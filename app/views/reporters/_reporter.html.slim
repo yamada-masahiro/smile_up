@@ -7,7 +7,10 @@ div id="#{dom_id reporter}"
     =< reporter.furigana
   p
     strong Medium:
-    =< reporter.medium_id
+    - if reporter.medium_id
+      =< link_to reporter.medium.name, medium_path(reporter.medium_id)
+    - else
+      =< 'なし（独立記者）'
   p
-    strong Degree of welcome:
-    =< reporter.degree_of_welcome
+    strong Desirability:
+    =< reporter.desirability
