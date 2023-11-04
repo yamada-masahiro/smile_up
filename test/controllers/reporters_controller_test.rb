@@ -23,23 +23,32 @@ class ReportersControllerTest < ActionDispatch::IntegrationTest
       post reporters_url, params: { reporter: { desirability: @reporter.desirability, furigana: @reporter.furigana, medium_id: @reporter.medium_id, name: @reporter.name } }
     end
 
-    assert_redirected_to reporters_url
-    reporter_id = "reporter_#{@reporter.id}"
-    assert_select "##{reporter_id} span", text: @reporter.name
+    # TODO: `index`にリダイレクトする処理を復活する
+    # TODO: 代わりに`show`にリダイレクトするのを止める
+    assert_not flash.empty?
+    assert_redirected_to Reporter.last
+    follow_redirect!
+    assert_response :success
+    # assert_redirected_to reporters_url
+    # reporter_id = "reporter_#{@reporter.id}"
+    # assert_select "##{reporter_id} span", text: @reporter.name
   end
 
   test "should show reporter" do
     get reporter_url(@reporter)
-    assert_redirected_to reporters_url
-    reporter_id = "reporter_#{@reporter.id}"
-    assert_select "##{reporter_id} span", text: @reporter.name
+    # TODO: `index`にリダイレクトする処理を復活する
+    # TODO: 代わりに`show`にリダイレクトするのを止める
+    assert_response :success
+    # assert_redirected_to reporters_url
+    # reporter_id = "reporter_#{@reporter.id}"
+    # assert_select "##{reporter_id} span", text: @reporter.name
   end
 
   test "should get edit" do
     get edit_reporter_url(@reporter)
     assert_response :success
-    assert_select 'input', text: @reporter.name
-    assert_select 'input', text: @reporter.furigana
+    assert_select 'input[value=?]', @reporter.name
+    assert_select 'input[value=?]', @reporter.furigana
   end
 
   test "should update reporter" do
