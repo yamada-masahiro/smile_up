@@ -3,7 +3,7 @@ FROM ruby:3.2.2
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client vim && apt-get -y upgrade
+RUN apt-get update -qq && apt-get install -y nodejs yarn postgresql-client vim libvips42 && apt-get -y upgrade
 
 WORKDIR /smile_up
 

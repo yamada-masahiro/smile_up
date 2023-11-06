@@ -20,7 +20,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "sassc-rails"
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 gem "validate_url"
 gem "will_paginate"
 gem "bootstrap-will_paginate"
