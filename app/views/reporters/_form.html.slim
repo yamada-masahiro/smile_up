@@ -20,7 +20,8 @@
 
   div
     = form.label :desirability, style: "display: block"
-    = form.number_field :desirability
+    = form.select :desirability,
+                  Reporter.desirabilities.keys.map{ |key| [t("activerecord.enums.reporter.desirability.#{key}"), key] }
 
   div
     = form.label :portrait, style: "display: block"

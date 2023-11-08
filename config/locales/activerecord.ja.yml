@@ -12,5 +12,15 @@ ja:
         name:         氏名
         furigana:     振り仮名
         independent:  独立系
+        medium:       所属メディア
         medium_id:    所属メディアID
         desirability: 会見での指名
+        portrait:     顔写真
+    enums:
+      reporter:
+        desirability:
+          highly:     とても望ましい
+          somewhat:   やや望ましい
+          neutral:    どちらとも言えない
+          not_very:   余り望ましくない
+          not_at_all: 全く望ましくない
