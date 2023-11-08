@@ -16,7 +16,7 @@
 
   div
     = form.label :medium_id, style: "display: block"
-    = form.number_field :medium_id
+    = form.collection_select :medium_id, Medium.order(:furigana), :id, :name
 
   div
     = form.label :desirability, style: "display: block"
