@@ -1,4 +1,5 @@
 div id="#{dom_id reporter}"
+  = image_tag reporter.portrait if reporter.portrait.attached?
   p
     strong Name:
     =< reporter.name

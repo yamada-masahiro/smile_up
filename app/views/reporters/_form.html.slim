@@ -23,4 +23,8 @@
     = form.number_field :desirability
 
   div
+    = form.label :portrait, style: "display: block"
+    = form.file_field :portrait
+
+  div
     = form.submit

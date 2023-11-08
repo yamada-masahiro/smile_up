@@ -1,5 +1,6 @@
 class Reporter < ApplicationRecord
   belongs_to :medium, optional: true
+  has_one_attached :portrait
   enum :desirability,
     { highly:      2,
       somewhat:    1,
