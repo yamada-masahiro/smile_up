@@ -9,13 +9,15 @@ ja:
         furigana:    振り仮名
         website_url: ウェブサイト URL
       reporter:
-        name:         氏名
-        furigana:     振り仮名
-        independent:  独立系
-        medium:       所属メディア
-        medium_id:    所属メディアID
-        desirability: 会見での指名
-        portrait:     顔写真
+        name:               氏名
+        furigana:           振り仮名
+        independent:        独立系
+        medium:             所属メディア
+        medium_id:          所属メディアID
+        desirability:       会見での指名
+        portrait:           顔写真
+        portrait_source:    顔写真の出典
+        portrait_copyright: 顔写真の著作権
     enums:
       reporter:
         desirability:
