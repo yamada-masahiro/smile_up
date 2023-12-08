@@ -15,8 +15,13 @@
     = form.text_field :furigana
 
   div
+    = form.label :independent, style: "display: block"
+    = form.check_box :independent, { onchange: 'toggleMediumIdField(this)' }
+
+  div
     = form.label :medium_id, style: "display: block"
-    = form.collection_select :medium_id, Medium.order(:furigana), :id, :name
+    = form.collection_select :medium_id, Medium.order(:furigana), :id, :name,
+                             { disabled: @reporter.independent? }
 
   div
     = form.label :desirability, style: "display: block"
@@ -29,3 +34,22 @@
 
   div
     = form.submit
+
+javascript:
+
+  function toggleMediumIdField(checkbox) {
+    var field = document.getElementById('reporter_medium_id');
+    if (checkbox.checked) {
+      field.disabled = true;
+      field.value = ''; // これにより、medium_idの値がnilに設定される
+    } else {
+      field.disabled = false;
+    }
+  }
+
+javascript:
+// ページ読み込み時に状態を設定
+
+  document.addEventListener('turbolinks:load', function() {
+    toggleMediumIdField(document.getElementById('reporter_independent'));
+  });
