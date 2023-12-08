@@ -111,57 +111,86 @@ Medium.create(
   ]
 )
 
+PORTRAITS_PATH = Rails.root.join('db', 'seeds')
+
+def attach_image(reporter_name, file_name)
+  reporter = Reporter.find_by(name: reporter_name)
+  reporter.portrait.attach(io: File.open(PORTRAITS_PATH.join(file_name)),
+                           filename: file_name,
+                           content_type: 'image/jpg')
+end
+
 Medium.find_by(name: 'Arc Times').reporters.create(
   [
     { name:         '尾形 聡彦',
       furigana:     'おがた としひこ',
       independent:  false,
-      desirability: :not_at_all },
+      desirability: :not_at_all,
+      portrait_source: 'https://arctimes.com/from-founder/' },
     { name:         '望月 衣塑子',
       furigana:     'もちづき いそこ',
       independent:  false,
-      desirability: :not_at_all }
+      desirability: :not_at_all,
+      portrait_source: 'https://www.tokyo-np.co.jp/tags_reporter/m1/motizk_i' }
   ]
 )
+attach_image('尾形 聡彦',   '尾形聡彦.jpg')
+attach_image('望月 衣塑子', '望月衣塑子.jpg')
 
 Medium.find_by(name: '一月万冊').reporters.create(
   [
     { name:         '本間 龍',
       furigana:     'ほんま りゅう',
       independent:  false,
-      desirability: :not_at_all },
+      desirability: :not_at_all,
+      portrait_source: 'https://www.amazon.co.jp/%E6%9C%AC%E9%96%93-%E9%BE%8D/e/B004LW6PX4' },
     { name:         '佐藤 章',
       furigana:     'さとう あきら',
       independent:  false,
-      desirability: :not_at_all }
+      desirability: :not_at_all,
+      portrait_source: 'https://twitter.com/bSM2TC2coIKWrlM' }
   ]
 )
+attach_image('本間 龍', '本間龍.jpg')
+attach_image('佐藤 章', '佐藤章.jpg')
 
 Reporter.create(
   [
     { name:         '松谷 創一郎',
       furigana:     'まつたに そういちろう',
       independent:  true,
-      desirability: :not_at_all },
+      desirability: :not_at_all,
+      portrait_source: 'https://life.www.tbsradio.jp/2014/01/02/index.html',
+      portrait_copyright: '会田邦秋' },
     { name:         '鈴木 エイト',
       furigana:     'すずき えいと',
       independent:  true,
-      desirability: :not_at_all },
+      desirability: :not_at_all,
+      portrait_source: 'https://jisin.jp/domestic/2250493/',
+      portrait_copyright: '時事通信' },
     { name:         '駒井 千佳子',
       furigana:     'こまい ちかこ',
       independent:  true,
-      desirability: :highly }
+      desirability: :highly,
+      portrait_source: 'https://www.nikkan-gendai.com/articles/view/geino/277753',
+      portrait_copyright: '日刊ゲンダイ' }
   ]
 )
+attach_image('松谷 創一郎', '松谷創一郎.jpg')
+attach_image('鈴木 エイト', '鈴木エイト.jpg')
+attach_image('駒井 千佳子', '駒井千佳子.jpg')
 
 Medium.find_by(name: 'TBS').reporters.create(
   [
     { name:         '藤森 祥平',
       furigana:     'ふじもり しょうへい',
       independent:  false,
-      desirability: :highly }
+      desirability: :highly,
+      portrait_source: 'https://www.huffingtonpost.jp/entry/story_jp_651f8ae3e4b076f0bd0ed59e',
+      portrait_copyright: 'TBS'}
   ]
 )
+attach_image('藤森 祥平', '藤森祥平.jpg')
 
 Medium.find_by(name: '東洋経済').reporters.create(
   [
