@@ -1,16 +1,26 @@
 div id="#{dom_id reporter}"
+  - if reporter.portrait.attached?
+    = link_to reporter.portrait_source do
+      = image_tag reporter.portrait, alt: reporter.name
+      - if reporter.portrait_copyright
+        small
+          = "© #{reporter.portrait_copyright}"
   p
-    strong Name:
+    strong
+      = t 'activerecord.attributes.reporter.name'
     =< reporter.name
   p
-    strong Furigana:
+    strong
+      = t 'activerecord.attributes.reporter.furigana'
     =< reporter.furigana
   p
-    strong Medium:
+    strong
+      = t 'activerecord.attributes.reporter.medium'
     - if reporter.medium_id
       =< link_to reporter.medium.name, medium_path(reporter.medium_id)
     - else
       =< 'なし（独立記者）'
   p
-    strong Desirability:
-    =< reporter.desirability
+    strong
+      = t 'activerecord.attributes.reporter.desirability'
+    =< t(reporter.desirability, scope: 'activerecord.enums.reporter.desirability')

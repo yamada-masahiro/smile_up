@@ -15,12 +15,49 @@
     = form.text_field :furigana
 
   div
+    = form.label :independent, style: "display: block"
+    = form.check_box :independent, { onchange: 'toggleMediumIdField(this)' }
+
+  div
     = form.label :medium_id, style: "display: block"
-    = form.number_field :medium_id
+    = form.collection_select :medium_id, Medium.order(:furigana), :id, :name,
+                             { disabled: @reporter.independent? }
 
   div
     = form.label :desirability, style: "display: block"
-    = form.number_field :desirability
+    = form.select :desirability,
+                  Reporter.desirabilities.keys.map{ |key| [t("activerecord.enums.reporter.desirability.#{key}"), key] }
+
+  div
+    = form.label :portrait, style: "display: block"
+    = form.file_field :portrait
+
+  div
+    = form.label :portrait_source, style: "display: block"
+    = form.text_field :portrait_source
+
+  div
+    = form.label :portrait_copyright, style: "display: block"
+    = form.text_field :portrait_copyright
 
   div
     = form.submit
+
+javascript:
+
+  function toggleMediumIdField(checkbox) {
+    var field = document.getElementById('reporter_medium_id');
+    if (checkbox.checked) {
+      field.disabled = true;
+      field.value = ''; // これにより、medium_idの値がnilに設定される
+    } else {
+      field.disabled = false;
+    }
+  }
+
+javascript:
+// ページ読み込み時に状態を設定
+
+  document.addEventListener('turbolinks:load', function() {
+    toggleMediumIdField(document.getElementById('reporter_independent'));
+  });

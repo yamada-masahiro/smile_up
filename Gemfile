@@ -24,6 +24,7 @@ gem "image_processing", "~> 1.2"
 gem "validate_url"
 gem "will_paginate"
 gem "bootstrap-will_paginate"
+gem "rails-i18n", "~> 7.0.0"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -34,7 +35,7 @@ group :development do
   gem "web-console"
   # gem "rack-mini-profiler"
   # gem "spring"
-  gem "html2slim"
+  # gem "html2slim"
 end
 
 group :test do
