@@ -18,12 +18,12 @@ gem "jbuilder"
 gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
-gem "bootstrap-sass"
+gem "bootstrap", "~> 5.0"
 gem "sassc-rails"
 gem "image_processing", "~> 1.2"
 gem "validate_url"
-gem "will_paginate"
-gem "bootstrap-will_paginate"
+gem "will_paginate", '~> 4.0'
+gem "will_paginate-bootstrap-style"
 gem "rails-i18n", "~> 7.0.0"
 
 group :development, :test do
