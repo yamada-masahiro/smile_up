@@ -1,5 +1,10 @@
 div id="#{dom_id reporter}"
-  = image_tag reporter.portrait if reporter.portrait.attached?
+  - if reporter.portrait.attached?
+    = link_to reporter.portrait_source do
+      = image_tag reporter.portrait, alt: reporter.name
+      - if reporter.portrait_copyright
+        small
+          = "© #{reporter.portrait_copyright}"
   p
     strong
       = t 'activerecord.attributes.reporter.name'
