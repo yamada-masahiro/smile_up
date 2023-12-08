@@ -22,13 +22,13 @@ class Reporter < ApplicationRecord
 private
 
   def validate_name_not_include_nakaten
-    if name.match? /・/
+    if name.match?(/・/)
       errors.add(:name, "姓と名の区切りは「・」ではなく、空白にしてください")
     end
   end
 
   def validate_furigana_not_include_nakaten
-    if furigana.match? /・/
+    if furigana.match?(/・/)
       errors.add(:furigana, "振り仮名の区切りは「・」ではなく、空白にしてください")
     end
   end
