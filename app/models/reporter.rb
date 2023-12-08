@@ -18,6 +18,7 @@ class Reporter < ApplicationRecord
   validate :validate_name_not_include_nakaten
   validate :validate_furigana_not_include_nakaten
   validate :validate_medium_id_based_on_independent
+  validate :portrait_source_presence_if_portrait_attached
 
 private
 
@@ -38,6 +39,12 @@ private
       errors.add(:medium_id, "独立である場合は、メディアは指定できません")
     elsif !independent? && (medium_id.nil? || !Medium.exists?(medium_id))
       errors.add(:medium_id, "独立でない場合は、メディアを指定してください")
+    end
+  end
+
+  def portrait_source_presence_if_portrait_attached
+    if portrait.attached? && portrait_source.blank?
+      errors.add(:portrait_source, "顔写真が添付された時は、明記してください")
     end
   end
 end
