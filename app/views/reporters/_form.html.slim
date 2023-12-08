@@ -33,6 +33,14 @@
     = form.file_field :portrait
 
   div
+    = form.label :portrait_source, style: "display: block"
+    = form.text_field :portrait_source
+
+  div
+    = form.label :portrait_copyright, style: "display: block"
+    = form.text_field :portrait_copyright
+
+  div
     = form.submit
 
 javascript:

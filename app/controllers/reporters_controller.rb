@@ -68,6 +68,7 @@ class ReportersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reporter_params
-      params.require(:reporter).permit(:name, :furigana, :medium_id, :desirability, :portrait)
+      params.require(:reporter).permit(:name, :furigana, :medium_id, :desirability,
+                                       :portrait, :portrait_source, :portrait_copyright)
     end
 end
