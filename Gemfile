@@ -7,7 +7,7 @@ gem "rails", "~> 7.0.8"
 gem 'devise'
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
-gem "puma", "~> 5.0"
+gem "puma", "~> 5.6", ">= 5.6.8"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
